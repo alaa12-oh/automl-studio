@@ -12,6 +12,7 @@ __pycache__/
 mlruns/
 mlflow.db
 
+
 # Streamlit
 .streamlit/secrets.toml
 
@@ -28,4 +29,7 @@ mlflow.db
 
 # Editor files
 .vscode/
+
+# Jupyter files
+.ipynb_checkpoints/
 

@@ -6,13 +6,12 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder, PolynomialFeatures
 
 
 class IQRClipper(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None):
-
         X = np.asarray(X)
 
         self.q1_ = np.percentile(X, 25, axis=0)
@@ -26,14 +25,9 @@ class IQRClipper(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-
         X = np.asarray(X)
 
-        return np.clip(
-            X,
-            self.lower_bound_,
-            self.upper_bound_
-        )
+        return np.clip(X, self.lower_bound_, self.upper_bound_)
 
 
 def clean_data(data):
@@ -42,7 +36,6 @@ def clean_data(data):
         raise TypeError("Input data must be a pandas DataFrame")
 
     data = data.copy()
-
     data = data.drop_duplicates()
 
     if data.empty:
@@ -61,11 +54,23 @@ def build_preprocessor(X):
         include=["object", "category", "bool"]
     ).columns.tolist()
 
-    numeric_pipeline = Pipeline(steps=[
+    numeric_steps = [
         ("imputer", SimpleImputer(strategy="median")),
-        ("outlier_handler", IQRClipper()),
-        ("scaler", StandardScaler())
-    ])
+        ("outlier_handler", IQRClipper())
+    ]
+
+    if 2 <= len(numeric_features) <= 10:
+        numeric_steps.append(
+            ("feature_engineering", PolynomialFeatures(
+                degree=2,
+                interaction_only=True,
+                include_bias=False
+            ))
+        )
+
+    numeric_steps.append(("scaler", StandardScaler()))
+
+    numeric_pipeline = Pipeline(steps=numeric_steps)
 
     categorical_pipeline = Pipeline(steps=[
         ("imputer", SimpleImputer(strategy="most_frequent")),
@@ -87,9 +92,8 @@ def build_preprocessor(X):
     if not transformers:
         raise ValueError("No supported features found in dataset")
 
-    preprocessor = ColumnTransformer(
+    return ColumnTransformer(
         transformers=transformers,
         remainder="drop"
     )
 
-    return preprocessor
