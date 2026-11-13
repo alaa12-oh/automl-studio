@@ -2,81 +2,82 @@
 
 ### 🤖 End-to-End Automated Machine Learning Platform
 
-An interactive AutoML application that allows users to build, train, evaluate, and compare Machine Learning models using their own CSV datasets — **without writing code!**
+An interactive AutoML application designed to automate the process of building, training, evaluating, and comparing machine learning models using CSV datasets, without requiring users to write code.
 
 ---
 
 ## 🛠️ Built With
 
-<p align="center">
-
-**Python** · **Pandas** · **NumPy** · **Scikit-learn** · **Streamlit** · **MLflow** · **Matplotlib** · **Seaborn** · **Joblib**
-
-</p>
+Python · Pandas · NumPy · Scikit-learn · Streamlit · MLflow · Matplotlib · Seaborn · Joblib
 
 ---
 
 ## 🌟 Overview
 
-AutoML Studio simplifies the Machine Learning workflow by automating the main steps of model development through an easy-to-use Streamlit interface.
+AutoML Studio aims to simplify the machine learning workflow by automating its main stages through an easy-to-use interactive interface built with Streamlit.
 
-Users can upload their datasets, select a target column, identify the machine learning task, and automatically train and compare multiple algorithms.
+Users can upload their own CSV datasets, select a target column, and run automated data preprocessing, model training, evaluation, and comparison.
 
-The platform supports both **Classification** and **Regression**, then selects the best-performing model as the **Champion Model**.
+The platform supports two types of machine learning tasks:
+
+- **Classification**
+- **Regression**
+
+At the end of the process, the system automatically selects the best-performing model, known as the **Champion Model**.
 
 ## ✨ Key Features
 
-📂 **CSV Data Upload**
-- Upload your own datasets in CSV format.
+### 📂 CSV Data Upload
+- Upload custom datasets in CSV format.
 
-🔍 **Exploratory Data Analysis (EDA)**
-- Dataset preview and information.
-- Missing values analysis.
-- Feature distributions.
-- Correlation matrix visualization.
+### 🔍 Exploratory Data Analysis (EDA)
+- Display dataset previews and basic information.
+- Analyze missing values.
+- Visualize feature distributions.
+- Generate correlation matrices.
 
-🧹 **Data Cleaning & Preprocessing**
+### 🧹 Data Cleaning & Preprocessing
 - Handle missing values.
 - Remove duplicate records.
 - Handle numerical outliers using the IQR method.
-- Numerical scaling.
-- Categorical encoding using One-Hot Encoding.
+- Apply numerical feature scaling.
+- Encode categorical features using One-Hot Encoding.
 
-⚙️ **Feature Engineering**
-- Generate polynomial interaction features when applicable.
+### ⚙️ Feature Engineering
+- Generate polynomial interaction features.
 
-🎯 **Classification & Regression**
-- Automatically identify the machine learning task.
+### 🎯 Task Detection
+- Identify whether the machine learning task is Classification or Regression.
 
-🤖 **Model Training**
-- Train and compare five machine learning algorithms for each task.
+### 🤖 Model Training
+- Train and compare five machine learning algorithms for each task type.
 
-🔧 **Hyperparameter Tuning**
-- Optimize model parameters using RandomizedSearchCV.
+### 🔧 Hyperparameter Tuning
+- Optimize model hyperparameters using RandomizedSearchCV.
 
-📊 **Model Evaluation**
+### 📊 Model Evaluation
 - Evaluate models using appropriate performance metrics.
-- Visualize model performance.
+- Visualize evaluation results to compare model performance.
 
-🏆 **Champion Model Selection**
+### 🏆 Champion Model Selection
 - Automatically select the best-performing model based on cross-validation results.
 
-💾 **Model Export**
-- Save the selected model and preprocessing pipeline as a `.pkl` file.
+### 💾 Model Export
+- Save the selected model along with its preprocessing steps in a `.pkl` file.
 
-📈 **MLflow Experiment Tracking**
-- Track model parameters and evaluation metrics.
+### 📈 MLflow Experiment Tracking
+- Track model parameters.
+- Log model evaluation metrics.
 
-⏱️ **Process Time Analysis**
-- Measure the time consumed by different stages of the AutoML pipeline.
+### ⏱️ Process Time Analysis
+- Measure the execution time of different stages of the AutoML pipeline.
 
-🖥️ **Interactive User Interface**
-- Explore and use the entire pipeline through Streamlit.
+### 🖥️ Interactive User Interface
+- Explore and run the entire machine learning workflow through a Streamlit interface.
 
 ## 🤖 Machine Learning Algorithms
 
 ### Classification
-
 1. Logistic Regression
 2. Random Forest Classifier
 3. Support Vector Machine (SVM)
@@ -84,7 +85,6 @@ The platform supports both **Classification** and **Regression**, then selects t
 5. K-Nearest Neighbors (KNN)
 
 ### Regression
-
 1. Linear Regression
 2. Ridge Regression
 3. Random Forest Regressor
@@ -93,30 +93,33 @@ The platform supports both **Classification** and **Regression**, then selects t
 
 ## 📊 Evaluation Metrics
 
-**Classification:**
-- Accuracy
-- Weighted F1 Score
+### Classification
+- **Accuracy:** Measures the proportion of correct predictions.
+- **Weighted F1 Score:** Evaluates the balance between precision and recall while accounting for class distribution.
 
-**Regression:**
-- Root Mean Squared Error (RMSE)
-- Mean Absolute Error (MAE)
-- R² Score
+### Regression
+- **Root Mean Squared Error (RMSE):** Measures the square root of the average squared prediction errors.
+- **Mean Absolute Error (MAE):** Measures the average absolute prediction error.
+- **R² Score:** Measures how well the model explains the variance in the target variable.
 
-🏅 The Champion Model is selected using the highest cross-validation F1 Score for Classification or the lowest cross-validation RMSE for Regression.
+The Champion Model is selected based on:
+
+- The highest Cross-Validation F1 Score for Classification.
+- The lowest Cross-Validation RMSE for Regression.
 
 ## 🧰 Technologies & Libraries
 
-| Technology | Purpose |
+| Library | Purpose |
 |---|---|
-| Python | Main programming language |
+| Python | Core programming language |
 | Pandas | Data manipulation and analysis |
 | NumPy | Numerical computations |
-| Scikit-learn | Preprocessing, training, tuning, and evaluation |
-| Streamlit | Interactive web application |
-| MLflow | Experiment tracking |
+| Scikit-learn | Data preprocessing, model training, tuning, and evaluation |
+| Streamlit | Interactive application interface |
+| MLflow | Machine learning experiment tracking |
 | Matplotlib | Data visualization |
-| Seaborn | Statistical visualization |
-| Joblib | Model serialization and loading |
+| Seaborn | Statistical data visualization |
+| Joblib | Model saving and loading |
 
 ## 📁 Project Structure
 
@@ -139,10 +142,6 @@ automl-studio/
 ├── artifacts/
 │   └── best_model.pkl
 │
-├── tests/
-│   ├── test_data_loader.py
-│   └── test_preprocessing.py
-│
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -150,33 +149,33 @@ automl-studio/
 
 ## ⚙️ Installation & Setup
 
-**1. Clone the repository**
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/alaa12-oh/automl-studio.git
 ```
 
-**2. Navigate to the project directory**
+### 2. Navigate to the Project Directory
 
 ```bash
 cd automl-studio
 ```
 
-**3. Create a virtual environment**
+### 3. Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-**4. Activate the virtual environment**
+### 4. Activate the Virtual Environment
 
-Windows:
+On Windows:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-**5. Install dependencies**
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -184,41 +183,41 @@ pip install -r requirements.txt
 
 ## 🚀 Run the Application
 
-Start the Streamlit application:
+Start the Streamlit application using:
 
 ```bash
 streamlit run app.py
 ```
 
-Then open the application in your browser.
+Then open the local URL displayed in your terminal.
 
-### 📝 How to Use
+## 📝 How to Use
 
-1. Upload a CSV dataset.
+1. Upload a dataset in CSV format.
 2. Select the target column.
-3. Review the detected task type.
+3. Identify the machine learning task type.
 4. Start the model training process.
-5. Explore model comparisons and evaluation results.
+5. Explore and compare model evaluation results.
 6. View the selected Champion Model.
-7. Download the trained model.
+7. Use the saved model to make predictions on new data.
 
 ## 📈 MLflow Experiment Tracking
 
-AutoML Studio integrates MLflow to track machine learning experiments.
+AutoML Studio integrates with MLflow to track machine learning experiments and record model results.
 
-For each trained model, MLflow records:
+MLflow logs the following information for each trained model:
 
 - Model name and task type.
 - Best hyperparameters.
 - Evaluation metrics.
 
-To launch the MLflow interface:
+To launch the MLflow UI, run:
 
 ```bash
 mlflow ui --backend-store-uri sqlite:///mlflow.db
 ```
 
-Open the following address:
+Then open:
 
 ```text
 http://localhost:5000
@@ -226,7 +225,7 @@ http://localhost:5000
 
 ## 🏆 Model Export
 
-The selected Champion Model is saved as:
+The selected Champion Model is saved at:
 
 ```text
 artifacts/best_model.pkl
@@ -234,22 +233,21 @@ artifacts/best_model.pkl
 
 The exported file contains the complete machine learning pipeline, including preprocessing steps and the trained model.
 
-This allows users to load the saved model and make predictions on new data without repeating the entire training process.
+This allows users to load the saved model and make predictions on new data without running the entire training process again.
 
 ## 🔮 Future Improvements
 
-- Support for additional data formats.
-- More machine learning algorithms.
-- Advanced feature selection techniques.
-- Additional visualization options.
-- Further performance optimization.
+- Support additional data file formats.
+- Introduce more machine learning algorithms.
+- Improve training and experiment tracking performance.
+- Enhance the user interface with additional analysis and visualization options.
 
-## 👩‍💻 Author
+## 👩‍💻 Project Credits
 
-**Alaa Ibrahim**
+Developed by **Alaa Ibrahim**
 
-🔗 GitHub: [alaa12-oh](https://github.com/alaa12-oh)
+GitHub: https://github.com/alaa12-oh
 
 ---
 
-⭐ *Built with Python, Machine Learning, and a passion for automation.*
+⭐ AutoML Studio was developed using Python and machine learning technologies to simplify and automate the model development workflow.
