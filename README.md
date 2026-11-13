@@ -14,9 +14,9 @@ Python · Pandas · NumPy · Scikit-learn · Streamlit · MLflow · Matplotlib �
 
 ## 🌟 Overview
 
-AutoML Studio aims to simplify the machine learning workflow by automating its main stages through an easy-to-use interactive interface built with Streamlit.
+AutoML Studio simplifies the machine learning workflow by automating its main stages through an easy-to-use interactive interface built with Streamlit.
 
-Users can upload their own CSV datasets, select a target column, and run automated data preprocessing, model training, evaluation, and comparison.
+Users can upload their own CSV datasets, select a target column, choose the machine learning task type, and run automated data preprocessing, model training, evaluation, and comparison.
 
 The platform supports two types of machine learning tasks:
 
@@ -46,8 +46,9 @@ At the end of the process, the system automatically selects the best-performing 
 ### ⚙️ Feature Engineering
 - Generate polynomial interaction features.
 
-### 🎯 Task Detection
-- Identify whether the machine learning task is Classification or Regression.
+### 🎯 Task Selection
+- Select between Classification and Regression tasks.
+- Choose the target column from the uploaded dataset.
 
 ### 🤖 Model Training
 - Train and compare five machine learning algorithms for each task type.
@@ -163,16 +164,36 @@ cd automl-studio
 
 ### 3. Create a Virtual Environment
 
+**Windows:**
+
 ```bash
 python -m venv .venv
 ```
 
-### 4. Activate the Virtual Environment
-
-On Windows:
+**Linux:**
 
 ```bash
-.venv\Scripts\activate
+python3 -m venv .venv
+```
+
+### 4. Activate the Virtual Environment
+
+**Windows (PowerShell):**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**Windows (Command Prompt):**
+
+```cmd
+.venv\Scripts\activate.bat
+```
+
+**Linux:**
+
+```bash
+source .venv/bin/activate
 ```
 
 ### 5. Install Dependencies
@@ -195,11 +216,11 @@ Then open the local URL displayed in your terminal.
 
 1. Upload a dataset in CSV format.
 2. Select the target column.
-3. Identify the machine learning task type.
+3. Choose the machine learning task type.
 4. Start the model training process.
 5. Explore and compare model evaluation results.
 6. View the selected Champion Model.
-7. Use the saved model to make predictions on new data.
+7. Find the exported model in the `artifacts` directory.
 
 ## 📈 MLflow Experiment Tracking
 
@@ -246,7 +267,7 @@ This allows users to load the saved model and make predictions on new data witho
 
 Developed by **Alaa Ibrahim**
 
-GitHub: https://github.com/alaa12-oh
+GitHub: [https://github.com/alaa12-oh](https://github.com/alaa12-oh)
 
 ---
 
